@@ -1,10 +1,36 @@
 import 'package:flutter/material.dart';
+import '../constant/colors.dart';
 
 class TodoItem extends StatelessWidget {
   const TodoItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: ListTile(
+        onTap: () {},
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        tileColor: Colors.white,
+        leading: Icon(Icons.check_box, color: tdBlue),
+        title: Text(
+          'Check mail',
+          style: TextStyle(
+            color: tdBlack,
+            fontSize: 16,
+            decoration: TextDecoration.lineThrough,
+          ),
+        ),
+        trailing: Container(
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+            color: tdRed,
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+      ),
+    );
   }
 }
