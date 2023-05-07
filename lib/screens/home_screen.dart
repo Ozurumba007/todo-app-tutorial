@@ -107,7 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 40,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _addToDoItem(_todoController.text);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: tdBlue,
                       minimumSize: Size(60, 60),
@@ -133,6 +135,18 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       todosList.removeWhere((item) => item.id == id);
     });
+  }
+
+  void _addToDoItem(String toDo) {
+    setState(() {
+      todosList.add(
+        ToDo(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          todoText: toDo,
+        ),
+      );
+    });
+    _todoController.clear();
   }
 
   Widget searchBox() {
