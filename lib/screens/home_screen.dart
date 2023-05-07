@@ -49,6 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       for (ToDo todoo in todosList)
                         TodoItem(
                           todo: todoo,
+                          onToDoChanged: _handleToDoChange,
+                          onDeleteitem: () {},
                         ),
                     ],
                   ),
