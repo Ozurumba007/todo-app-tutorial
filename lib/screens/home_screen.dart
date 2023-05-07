@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final todosList = ToDo.todoList();
+  final _todoController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         TodoItem(
                           todo: todoo,
                           onToDoChanged: _handleToDoChange,
-                          onDeleteitem: () {},
+                          onDeleteitem: _deleteToDoItem,
                         ),
                     ],
                   ),
@@ -86,9 +87,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
+                      controller: _todoController,
                       decoration: InputDecoration(
-                          hintText: 'Add a new todo item',
-                          border: InputBorder.none),
+                        hintText: 'Add a new todo item',
+                        border: InputBorder.none,
+                      ),
                     ),
                   ),
                 ),
