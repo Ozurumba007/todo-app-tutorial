@@ -15,6 +15,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final todosList = ToDo.todoList();
   final _todoController = TextEditingController();
+  List<ToDo> _foundToDo = [];
+
+  @override
+  void initState() {
+    _foundToDo = todosList;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      for (ToDo todoo in todosList)
+                      for (ToDo todoo in _foundToDo)
                         TodoItem(
                           todo: todoo,
                           onToDoChanged: _handleToDoChange,
@@ -126,27 +134,50 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _handleToDoChange(ToDo todo) {
-    setState(() {
-      todo.isDone = !todo.isDone;
-    });
+    setState(
+      () {
+        todo.isDone = !todo.isDone;
+      },
+    );
   }
 
   void _deleteToDoItem(String id) {
-    setState(() {
-      todosList.removeWhere((item) => item.id == id);
-    });
+    setState(
+      () {
+        todosList.removeWhere((item) => item.id == id);
+      },
+    );
   }
 
   void _addToDoItem(String toDo) {
-    setState(() {
-      todosList.add(
-        ToDo(
-          id: DateTime.now().millisecondsSinceEpoch.toString(),
-          todoText: toDo,
-        ),
-      );
-    });
+    setState(
+      () {
+        todosList.add(
+          ToDo(
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
+            todoText: toDo,
+          ),
+        );
+      },
+    );
     _todoController.clear();
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<ToDo> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = todosList;
+    } else {
+      results = todosList
+          .where((item) => item.todoText!
+              .toLowerCase()
+              .contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      _foundToDo = results;
+    });
   }
 
   Widget searchBox() {
