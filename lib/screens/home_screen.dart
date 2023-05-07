@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      for (ToDo todoo in _foundToDo)
+                      for (ToDo todoo in _foundToDo.reversed)
                         TodoItem(
                           todo: todoo,
                           onToDoChanged: _handleToDoChange,
@@ -188,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextField(
+        onChanged: (value) => _runFilter(value),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(0),
           prefixIcon: Icon(
@@ -233,12 +234,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-//  Container(
-//               height: 40,
-//               width: 40,
-//               child: ElevatedButton(
-//                 onPressed: () {},
-//                 child: Icon(Icons.add),
-//               ),
-//             ),
