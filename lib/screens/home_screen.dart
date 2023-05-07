@@ -126,6 +126,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _deleteToDoItem(String id) {
+    setState(() {
+      todosList.removeWhere((item) => item.id == id);
+    });
+  }
+
   Widget searchBox() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15),
