@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:todo_app_tutorial/constant/colors.dart';
+import '../constant/colors.dart';
+import '../model/todo.dart';
 import '../widgets/todo_item.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final todosList = ToDo.todoList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  TodoItem(),
-                  TodoItem(),
-                  TodoItem(),
                   TodoItem(),
                 ],
               ),
