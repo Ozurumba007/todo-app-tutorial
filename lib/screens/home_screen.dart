@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: tdBGColor,
       appBar: _buildAppBar(),
       body: Container(
+        margin: EdgeInsets.only(bottom: 20),
         padding: EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 15,
@@ -41,6 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+                  TodoItem(),
+                  TodoItem(),
+                  TodoItem(),
                   TodoItem(),
                 ],
               ),
@@ -81,6 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
   AppBar _buildAppBar() {
     return AppBar(
       elevation: 0,
+      backgroundColor: tdBGColor,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
