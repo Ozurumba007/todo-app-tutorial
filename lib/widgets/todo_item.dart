@@ -4,9 +4,13 @@ import '../constant/colors.dart';
 
 class TodoItem extends StatelessWidget {
   final ToDo todo;
+  final onToDoChanged;
+  final onDeleteitem;
   const TodoItem({
     super.key,
     required this.todo,
+    required this.onToDoChanged,
+    required this.onDeleteitem,
   });
 
   @override

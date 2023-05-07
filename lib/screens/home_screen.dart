@@ -90,12 +90,38 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
+                Container(
+                  margin: EdgeInsets.only(
+                    bottom: 20,
+                    right: 20,
+                  ),
+                  child: ElevatedButton(
+                    child: Text(
+                      '+',
+                      style: TextStyle(
+                        fontSize: 40,
+                      ),
+                    ),
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: tdBlue,
+                      minimumSize: Size(60, 60),
+                      elevation: 10,
+                    ),
+                  ),
+                ),
               ],
             ),
           )
         ],
       ),
     );
+  }
+
+  void _handleToDoChange(ToDo todo) {
+    setState(() {
+      todo.isDone = !todo.isDone;
+    });
   }
 
   Widget searchBox() {
